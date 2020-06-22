@@ -4,16 +4,19 @@ namespace Sun.Logging
 {
     public class LogEntry
     {
-        public long Id { get; set; }
+        public LogEntry()
+        {
+            TimeStamp = DateTime.Now;
+        }
 
-        public string ExceptionMessage { get; set; }
+        public long Id { get; set; }
 
         public string Message { get; set; }
 
         public string Level { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public Exception Exception { get; set; }
 
-        public string LoggerName { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

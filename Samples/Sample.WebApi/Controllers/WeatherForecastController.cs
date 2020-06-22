@@ -26,8 +26,10 @@ namespace Sample.WebApi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogError("这里是测试异常信息");
+            _logger.LogWarning("这里是测试Debug信息");
+            //_logger.LogError("这里是测试异常信息");
             var rng = new Random();
+            throw new Exception("测试异常");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

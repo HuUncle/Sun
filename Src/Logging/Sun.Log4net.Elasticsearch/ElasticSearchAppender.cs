@@ -26,7 +26,7 @@ namespace Sun.Log4net.Extensions
                 var logEntry = new LogEntry
                 {
                     Level = le.Level.Name,
-                    ExceptionMessage = le.GetExceptionString(),
+                    //ExceptionMessage = le.GetExceptionString(),
                     LoggerName = le.LoggerName,
                     Message = le.RenderedMessage,
                     TimeStamp = le.TimeStampUtc

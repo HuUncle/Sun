@@ -21,6 +21,10 @@ namespace Sample.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).ConfigureLogging(loggingBuilder =>
+                {
+                    //loggingBuilder.ClearProviders();
+                    //loggingBuilder.AddLog4net();
                 });
     }
 }

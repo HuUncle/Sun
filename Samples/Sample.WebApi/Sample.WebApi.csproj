@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\Logging\Sun.Log4net\Sun.Log4net.csproj" />
+    <ProjectReference Include="..\..\Src\Logging\Sun.Logging.EventBusStore\Sun.Logging.EventBusStore.csproj" />
   </ItemGroup>
 
 

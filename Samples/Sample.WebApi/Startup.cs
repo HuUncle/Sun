@@ -10,7 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Sun.Log4net;
+using Sun.Logging;
+using Sun.Logging.EventBusStore;
 
 namespace Sample.WebApi
 {
@@ -27,6 +28,7 @@ namespace Sample.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<ILogStore, Store>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +39,9 @@ namespace Sample.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            loggerFactory.AddLog4net();
+            var store = app.ApplicationServices.GetService<ILogStore>();
+
+            loggerFactory.AddProvider(new SunLoggerProvider(store));
 
             app.UseHttpsRedirection();
 

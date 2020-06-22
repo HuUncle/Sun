@@ -9,17 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{0BE08131-E51
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{8294E3E2-7279-4435-A7BF-B9386F41C68E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sun.Core", "Src\Sun.Core\Sun.Core.csproj", "{B7C5D797-1941-4F1C-A125-E830E807580E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sun.Core", "Src\Sun.Core\Sun.Core.csproj", "{B7C5D797-1941-4F1C-A125-E830E807580E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sun.Log4net", "Src\Logging\Sun.Log4net\Sun.Log4net.csproj", "{110DF536-3A00-4A40-8B8E-C1DD8CBDC6AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sun.Log4net", "Src\Logging\Sun.Log4net\Sun.Log4net.csproj", "{110DF536-3A00-4A40-8B8E-C1DD8CBDC6AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.WebApi", "Samples\Sample.WebApi\Sample.WebApi.csproj", "{78E88A16-2611-4D29-8DD5-B45DCDB785E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.WebApi", "Samples\Sample.WebApi\Sample.WebApi.csproj", "{78E88A16-2611-4D29-8DD5-B45DCDB785E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sun.Log4net.Extensions", "Src\Logging\Sun.Log4net.Elasticsearch\Sun.Log4net.Extensions.csproj", "{0CD937C2-8BB7-41B2-A87F-C921F2D5DA64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sun.Logging", "Src\Logging\Sun.Logging\Sun.Logging.csproj", "{C9130DCC-6C8A-47AC-BF5B-5A34F7076D34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sun.Logging", "Src\Logging\Sun.Logging\Sun.Logging.csproj", "{C9130DCC-6C8A-47AC-BF5B-5A34F7076D34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sun.Elasticsearch", "Src\Sun.Elasticsearch\Sun.Elasticsearch.csproj", "{9B7ED27C-2EFF-4995-9F00-D0AAF5E47DF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sun.Elasticsearch", "Src\Sun.Elasticsearch\Sun.Elasticsearch.csproj", "{9B7ED27C-2EFF-4995-9F00-D0AAF5E47DF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sun.Logging.EventBusStore", "Src\Logging\Sun.Logging.EventBusStore\Sun.Logging.EventBusStore.csproj", "{C354D087-6B52-488D-B40C-9246BA6EC505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{9B7ED27C-2EFF-4995-9F00-D0AAF5E47DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7ED27C-2EFF-4995-9F00-D0AAF5E47DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7ED27C-2EFF-4995-9F00-D0AAF5E47DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C354D087-6B52-488D-B40C-9246BA6EC505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C354D087-6B52-488D-B40C-9246BA6EC505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C354D087-6B52-488D-B40C-9246BA6EC505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C354D087-6B52-488D-B40C-9246BA6EC505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{0CD937C2-8BB7-41B2-A87F-C921F2D5DA64} = {8294E3E2-7279-4435-A7BF-B9386F41C68E}
 		{C9130DCC-6C8A-47AC-BF5B-5A34F7076D34} = {8294E3E2-7279-4435-A7BF-B9386F41C68E}
 		{9B7ED27C-2EFF-4995-9F00-D0AAF5E47DF1} = {0BE08131-E517-467C-A20B-4B17D777469C}
+		{C354D087-6B52-488D-B40C-9246BA6EC505} = {8294E3E2-7279-4435-A7BF-B9386F41C68E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C19F617-7DCE-4FFF-873F-420AA98D32FA}
