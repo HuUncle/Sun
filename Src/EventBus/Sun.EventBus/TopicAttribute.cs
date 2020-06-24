@@ -1,0 +1,24 @@
+﻿using System;
+
+namespace Sun.EventBus
+{
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
+    public abstract class TopicAttribute : Attribute
+    {
+        protected TopicAttribute(string name)
+        {
+            Name = name;
+        }
+
+        /// <summary>
+        /// Topic or exchange route key name.
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// Default group name is CapOptions setting.(Assembly name) kafka --&gt; groups.id rabbit
+        /// MQ --&gt; queue.name
+        /// </summary>
+        public string Group { get; set; }
+    }
+}

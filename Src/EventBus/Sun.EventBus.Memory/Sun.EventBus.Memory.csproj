@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EventBus\Sun.EventBus\Sun.EventBus.csproj" />
-    <ProjectReference Include="..\Sun.Logging\Sun.Logging.csproj" />
+    <ProjectReference Include="..\Sun.EventBus\Sun.EventBus.csproj" />
   </ItemGroup>
 
 </Project>

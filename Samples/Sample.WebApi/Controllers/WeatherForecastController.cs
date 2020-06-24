@@ -4,9 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Sun.EventBus.Abstractions;
+using Sun.Logging.EventBusStore;
 
 namespace Sample.WebApi.Controllers
 {
+    public class LogEventHandler : IIntegrationEventHandler<LogEvent>
+    {
+        public Task Handle(LogEvent @event)
+        {
+            return Task.FromResult(0);
+        }
+    }
+
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -29,7 +39,7 @@ namespace Sample.WebApi.Controllers
             _logger.LogWarning("这里是测试Debug信息");
             //_logger.LogError("这里是测试异常信息");
             var rng = new Random();
-            throw new Exception("测试异常");
+            //throw new Exception("测试异常");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

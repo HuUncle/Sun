@@ -10,8 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Sample.WebApi.Controllers;
+using Sun.EventBus;
+using Sun.EventBus.Abstractions;
+using Sun.EventBus.Memory;
 using Sun.Logging;
 using Sun.Logging.EventBusStore;
+using Sun.EventBus.Extensions;
+using Sun.EventBus.Memory.Extensions;
 
 namespace Sample.WebApi
 {
@@ -28,7 +34,14 @@ namespace Sample.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ILogStore, Store>();
+
+            services.AddSingleton<LogEventHandler>();
+
+            services.AddEventBus(x => x.UseMemory());
+
+            //services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+            //services.AddSingleton<IEventBus, EventBusMemory>();
+            services.AddSingleton<ILogStore, LogStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +66,10 @@ namespace Sample.WebApi
             {
                 endpoints.MapControllers();
             });
+
+            var bus = app.ApplicationServices.GetService<IEventBus>();
+            bus.Subscribe<LogEvent, LogEventHandler>();
+            bus.StartSubscribe();
         }
     }
 }

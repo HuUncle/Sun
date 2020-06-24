@@ -27,7 +27,7 @@ namespace Sun.Log4net.Extensions
                 {
                     Level = le.Level.Name,
                     //ExceptionMessage = le.GetExceptionString(),
-                    LoggerName = le.LoggerName,
+                    //LoggerName = le.LoggerName,
                     Message = le.RenderedMessage,
                     TimeStamp = le.TimeStampUtc
                 };

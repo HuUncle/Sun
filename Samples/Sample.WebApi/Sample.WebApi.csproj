@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Src\EventBus\Sun.EventBus.Memory\Sun.EventBus.Memory.csproj" />
     <ProjectReference Include="..\..\Src\Logging\Sun.Logging.EventBusStore\Sun.Logging.EventBusStore.csproj" />
   </ItemGroup>
 
