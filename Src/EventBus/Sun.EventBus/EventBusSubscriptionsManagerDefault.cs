@@ -5,14 +5,14 @@ using Sun.EventBus.Abstractions;
 
 namespace Sun.EventBus
 {
-    public class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
+    public class EventBusSubscriptionsManagerDefault : IEventBusSubscriptionsManager
     {
-        private readonly Dictionary<string, List<Type>> _handlers;
-        private readonly List<Type> _eventTypes;
+        protected readonly Dictionary<string, List<Type>> _handlers;
+        protected readonly List<Type> _eventTypes;
 
         public event EventHandler<string> OnEventRemoved;
 
-        public InMemoryEventBusSubscriptionsManager()
+        public EventBusSubscriptionsManagerDefault()
         {
             _handlers = new Dictionary<string, List<Type>>();
             _eventTypes = new List<Type>();
@@ -21,19 +21,19 @@ namespace Sun.EventBus
         /// <summary>
         /// 是否空事件处理器
         /// </summary>
-        public bool IsEmpty => !_handlers.Keys.Any();
+        public virtual bool IsEmpty => !_handlers.Keys.Any();
 
         /// <summary>
         /// 清除事件处理器
         /// </summary>
-        public void Clear() => _handlers.Clear();
+        public virtual void Clear() => _handlers.Clear();
 
         /// <summary>
         /// 新增订阅
         /// </summary>
         /// <typeparam name="T"> </typeparam>
         /// <typeparam name="TH"> </typeparam>
-        public void AddSubscription<T, TH>()
+        public virtual void AddSubscription<T, TH>()
             where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>
         {
@@ -51,7 +51,7 @@ namespace Sun.EventBus
         /// </summary>
         /// <typeparam name="T"> </typeparam>
         /// <typeparam name="TH"> </typeparam>
-        public void RemoveSubscription<T, TH>()
+        public virtual void RemoveSubscription<T, TH>()
             where TH : IIntegrationEventHandler<T>
             where T : IntegrationEvent
         {
@@ -77,7 +77,7 @@ namespace Sun.EventBus
         /// 根据事件获得事件处理器
         /// </summary>
         /// <typeparam name="T"> </typeparam>
-        public IEnumerable<Type> GetHandlersForEvent<T>() where T : IntegrationEvent
+        public virtual IEnumerable<Type> GetHandlersForEvent<T>() where T : IntegrationEvent
         {
             var key = GetEventKey<T>();
             return GetHandlersForEvent(key);
@@ -87,7 +87,7 @@ namespace Sun.EventBus
         /// 根据事件名获得事件处理器
         /// </summary>
         /// <param name="eventName"> </param>
-        public IEnumerable<Type> GetHandlersForEvent(string eventName) => _handlers[eventName];
+        public virtual IEnumerable<Type> GetHandlersForEvent(string eventName) => _handlers[eventName];
 
         /// <summary>
         /// 取消事件引发
@@ -134,7 +134,7 @@ namespace Sun.EventBus
         /// 是否含有事件订阅
         /// </summary>
         /// <typeparam name="T"> </typeparam>
-        public bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent
+        public virtual bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent
         {
             var key = GetEventKey<T>();
             return HasSubscriptionsForEvent(key);
@@ -144,17 +144,14 @@ namespace Sun.EventBus
         /// 是否含有事件订阅
         /// </summary>
         /// <param name="eventName"> </param>
-        public bool HasSubscriptionsForEvent(string eventName) => _handlers.ContainsKey(eventName);
+        public virtual bool HasSubscriptionsForEvent(string eventName) => _handlers.ContainsKey(eventName);
 
         /// <summary>
         /// 获取事件名称
         /// </summary>
         /// <typeparam name="T"> </typeparam>
-        public string GetEventKey<T>()
-        {
-            return typeof(T).Name;
-        }
+        public virtual string GetEventKey<T>() => typeof(T).Name;
 
-        public Type GetEventTypeByName(string eventName) => _eventTypes.FirstOrDefault(t => t.Name == eventName);
+        public virtual Type GetEventTypeByName(string eventName) => _eventTypes.FirstOrDefault(t => t.Name == eventName);
     }
 }

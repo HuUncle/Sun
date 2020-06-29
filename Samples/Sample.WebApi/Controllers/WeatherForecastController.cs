@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Sample.WebApi.Events;
 using Sun.EventBus.Abstractions;
-using Sun.Logging.EventBusStore;
 
 namespace Sample.WebApi.Controllers
 {
-    public class LogEventHandler : IIntegrationEventHandler<LogEvent>
-    {
-        public Task Handle(LogEvent @event)
-        {
-            return Task.FromResult(0);
-        }
-    }
-
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -47,6 +38,20 @@ namespace Sample.WebApi.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet]
+        public IActionResult PublishTestA([FromServices] IEventBus bus)
+        {
+            bus.Publish(new TestAEvent($"{new Random().Next(1, 100)}"));
+            return Ok();
+        }
+
+        [HttpGet]
+        public IActionResult PublishTestB([FromServices] IEventBus bus)
+        {
+            bus.Publish(new TestBEvent($"{new Random().Next(1, 100)}"));
+            return Ok();
         }
     }
 }

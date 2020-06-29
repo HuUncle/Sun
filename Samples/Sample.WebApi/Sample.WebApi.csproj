@@ -6,9 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\EventBus\Sun.EventBus.Memory\Sun.EventBus.Memory.csproj" />
+    <ProjectReference Include="..\..\Src\EventBus\Sun.EventBus.RabbitMQ\Sun.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\Src\Logging\Sun.Logging.EventBusStore\Sun.Logging.EventBusStore.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json-schema.org/draft-04/schema" /></VisualStudio></ProjectExtensions>
 
 
 </Project>

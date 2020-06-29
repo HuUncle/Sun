@@ -13,7 +13,7 @@ namespace Sun.Log4net
             _logger = LogManager.GetLogger(Log4netHelper.AssemblyName, name);
         }
 
-        public IDisposable BeginScope<TState>(TState state) => null;
+        public IDisposable BeginScope<TState>(TState state) => NullScope.Instance;
 
         public bool IsEnabled(LogLevel logLevel)
         {

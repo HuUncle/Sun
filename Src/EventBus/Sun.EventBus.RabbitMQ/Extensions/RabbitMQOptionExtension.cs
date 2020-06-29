@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Sun.Core;
+using Sun.EventBus.Abstractions;
 
 namespace Sun.EventBus.RabbitMQ.Extensions
 {
-    public class RabbitMQOptionExtension
+    public class RabbitMQOptionExtension : IOptionExtension
     {
-        public static RabbitMQOption UseRabbitMQ()
+        public void AddServices(IServiceCollection services)
         {
-            return null;
+            services.AddSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
+            services.AddSingleton<IEventBus, EventBusRabbitMQ>();
         }
     }
 }

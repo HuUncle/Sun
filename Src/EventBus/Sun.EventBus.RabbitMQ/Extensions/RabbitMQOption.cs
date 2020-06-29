@@ -31,7 +31,9 @@ namespace Sun.EventBus.RabbitMQ.Extensions
         /// <summary>
         /// The topic exchange type.
         /// </summary>
-        public const string ExchangeType = "topic";
+        public const string DefaultExchangeType = "topic";
+
+        public const string DefaultQueue = "sun";
 
         /// <summary>
         /// The host to connect to. If you want connect to the cluster, you can assign like “192.168.1.111,192.168.1.112”
@@ -68,6 +70,10 @@ namespace Sun.EventBus.RabbitMQ.Extensions
         /// ms (10 days).
         /// </summary>
         public int QueueMessageExpires { get; set; } = 864000000;
+
+        public string ExchangeType { get; set; } = DefaultExchangeType;
+
+        public string Queue { get; set; } = DefaultQueue;
 
         /// <summary>
         /// RabbitMQ native connection factory options

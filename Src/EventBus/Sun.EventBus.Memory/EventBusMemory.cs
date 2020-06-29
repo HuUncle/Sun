@@ -69,7 +69,6 @@ namespace Sun.EventBus.Memory
                         if (eventType != null)
                         {
                             var instance = scope.ServiceProvider.GetRequiredService(subscription);
-                            //var instance = Activator.CreateInstance(subscription);
                             var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
                             await (Task)concreteType.GetMethod("Handle").Invoke(instance, new object[] { @event });
                         }

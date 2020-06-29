@@ -13,7 +13,7 @@ namespace Sun.EventBus.Extensions
             var options = new EventBusOption();
             action.Invoke(options);
 
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+            services.AddSingleton<IEventBusSubscriptionsManager, EventBusSubscriptionsManagerDefault>();
 
             foreach (var item in options.Extensions)
                 item.AddServices(services);
